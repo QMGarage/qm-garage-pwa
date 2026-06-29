@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#ff5a00" />
+    <meta name="description" content="QM Garage - Fiche de révision véhicule" />
+
+    <!-- PWA iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="QM Garage" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+    <link rel="apple-touch-startup-image" href="/icons/icon-512.png" />
+
+    <link rel="manifest" href="/manifest.json" />
+    <title>QM Garage</title>
+
+    <style>
+      * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+      body { margin: 0; padding: 0; overscroll-behavior: none; }
+      /* Safe area iPhone notch / Dynamic Island */
+      #root {
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>Activez JavaScript pour utiliser QM Garage.</noscript>
+    <div id="root"></div>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(() => console.log('SW enregistré'))
+            .catch(err => console.log('SW erreur:', err));
+        });
+      }
+    </script>
+  </body>
+</html>
